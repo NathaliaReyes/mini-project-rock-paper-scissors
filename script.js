@@ -16,12 +16,12 @@ function play() {
 
     if(start) {
         userChoice = prompt("Do you choose rock, paper or scissors?");
+        userChoice = userChoice.toLowerCase(); // Convert user's choice to lowercase
         computerChoice = computer();
         user();
         console.log("Computer chose: " + computerChoice);
         console.log(compare(userChoice, computerChoice));
         console.log("Wins: " + wins + ", Losses: " + losses + ", Ties: " + ties);
-        console.log("------------------------------------------------------------------");
     } else {
         alert("Maybe next time.");
         return;
@@ -86,18 +86,15 @@ function compare(userChoice, computerChoice) {
 
     
 
-
 do {
+    play();
     var playAgain = confirm("Do you want to play again?");
-    if(playAgain) {
-        console.log("------------------------------------------------------------------");
-        play();
-        
-    } else {
+    if (!playAgain) {
         alert("Maybe next time.");
         break;
     }
-} while(playAgain);
+    console.log("------------------------------------------------------------------");
+} while (playAgain);
 
 
 
