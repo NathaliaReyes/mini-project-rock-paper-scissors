@@ -9,16 +9,12 @@ var ties = 0;
 var userChoice = "";
 var computerChoice = "";
 
-
 function play() {
-
     var start = confirm("Do you want to play Rock, Paper, Scissors?");
-
     if(start) {
-        userChoice = prompt("Do you choose rock, paper or scissors?");
-        userChoice = userChoice.toLowerCase(); // Convert user's choice to lowercase
+        userChoice = prompt("Do you choose rock (R), paper (P) or scissors (S)?");
+        userChoice = user();       
         computerChoice = computer();
-        user();
         console.log("Computer chose: " + computerChoice);
         console.log(compare(userChoice, computerChoice));
         console.log("Wins: " + wins + ", Losses: " + losses + ", Ties: " + ties);
@@ -28,11 +24,16 @@ function play() {
     }
 }
 
-
 function user() {
-    
-    if (userChoice === "rock" || userChoice === "paper" || userChoice === "scissors") {
-        console.log("You chose " + userChoice);
+    if ((userChoice.toLowerCase()) === "r") {
+        console.log("You chose " + ROCK);
+        return ROCK;
+    }else if ((userChoice.toLowerCase()) === "p") {
+        console.log("You chose " + PAPER);
+        return PAPER;
+    } else if ((userChoice.toLowerCase()) === "s") {
+        console.log("You chose " + SCISSORS);
+        return SCISSORS;
     } else {
         console.log("You didn't choose rock, paper or scissors.");
     }
@@ -59,32 +60,29 @@ function compare(userChoice, computerChoice) {
 
         if (computerChoice === SCISSORS) {
             wins++;
-            return "You won!";
+            return "YOU won!!";
         } else {
             losses++;
-            return "Computer won :(";
+            return "COMPUTER Won :(";
         }
     } else if (userChoice === PAPER) {
         if (computerChoice === ROCK) {
             wins++;
-            return "You won!";
+            return "YOU won!!";
         } else {
             losses++;
-            return "Computer won :(";
+            return "COMPUTER Won :(";
         }
     } else if (userChoice === SCISSORS) {
         if (computerChoice === ROCK) {
             losses++;
-            return "Computer won :(";
+            return "COMPUTER Won :(";
         } else {
             wins++;
-            return "You won!";
+            return "YOU won!!";
         }
     }
 }
-
-
-    
 
 do {
     play();
